@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VJoraShop - Online Shopping</title>
+
+    <meta name="description"
+        content="VJoraShop - Fashion, Electronics, Beauty, Home and Accessories at great prices.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- SKIP LINK FOR ACCESSIBILITY -->
+<a href="#products"
+   class="skip-link sr-only"
+   style="position:absolute;left:-9999px;">
+    Skip to main content
+</a>
+
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="header">
+
+    <div class="header-container">
+
+        <!-- LOGO -->
+        <button
+            class="logo"
+            id="logoBtn"
+            type="button"
+            aria-label="VJoraShop Home">
+
+            <img
+                src="images/logo.png"
+                alt="VJoraShop"
+                width="140"
+                height="40">
+
+        </button>
+
+
+        <!-- SEARCH -->
+        <div class="search-box">
+
+            <label
+                for="searchInput"
+                class="sr-only"
+                style="display:none;">
+                Search products
+            </label>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+                autocomplete="off"
+                aria-label="Search products">
+
+            <button
+                id="searchBtn"
+                type="button"
+                aria-label="Search">
+                🔍
+            </button>
+
+        </div>
+
+
+        <!-- HEADER ACTIONS -->
+        <div class="header-actions">
+
+            <button
+                id="accountBtn"
+                class="header-btn"
+                type="button">
+
+                <span
+                    class="header-icon"
+                    aria-hidden="true">
+                    👤
+                </span>
+
+                <span>Account</span>
+
+            </button>
+
+
+            <button
+                id="wishlistBtn"
+                class="header-btn"
+                type="button"
+                aria-label="Wishlist">
+
+                <span
+                    class="header-icon"
+                    aria-hidden="true">
+                    ❤️
+                </span>
+
+                <span>Wishlist</span>
+
+                <b
+                    id="wishlistCount"
+                    aria-live="polite">
+                    0
+                </b>
+
+            </button>
+
+
+            <button
+                id="cartBtn"
+                class="header-btn"
+                type="button"
+                aria-label="Cart">
+
+                <span
+                    class="header-icon"
+                    aria-hidden="true">
+                    🛒
+                </span>
+
+                <span>Cart</span>
+
+                <b
+                    id="cartCount"
+                    aria-live="polite">
+                    0
+                </b>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+     ========================================================= -->
+
+<main>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav
+        class="navbar"
+        aria-label="Main Navigation">
+
+        <div class="nav-container">
+
+            <button
+                id="homeBtn"
+                type="button">
+                Home
+            </button>
+
+            <button
+                data-nav-category="Fashion"
+                type="button">
+                Fashion
+            </button>
+
+            <button
+                data-nav-category="Electronics"
+                type="button">
+                Electronics
+            </button>
+
+            <button
+                data-nav-category="Beauty"
+                type="button">
+                Beauty
+            </button>
+
+            <button
+                data-nav-category="Home"
+                type="button">
+                Home &amp; Living
+            </button>
+
+            <button
+                data-nav-category="Sports"
+                type="button">
+                Sports
+            </button>
+
+            <button
+                data-nav-category="Accessories"
+                type="button">
+                Accessories
+            </button>
+
+            <button
+                id="dealsBtn"
+                type="button">
+                🔥 Deals
+            </button>
+
+            <button
+                id="newArrivalsBtn"
+                type="button">
+                ✨ New Arrivals
+            </button>
+
+            <button
+                id="contactNavBtn"
+                type="button">
+                Contact
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO SECTION
+         ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                WELCOME TO VJORASHOP
+            </span>
+
+            <h1>
+                Everything You Need.
+                <strong>One Place.</strong>
+            </h1>
+
+            <p>
+                Shop fashion, electronics, beauty, home essentials,
+                sports products and more.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    id="shopNowBtn"
+                    type="button">
+                    Shop Now →
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="dealsSectionBtn"
+                    type="button">
+                    View Deals
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORIES
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    EXPLORE
+                </span>
+
+                <h2>
+                    Shop By Category
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <button
+                class="category-card"
+                data-category="Fashion"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    👕
+                </div>
+
+                <h3>Fashion</h3>
+
+                <p>
+                    Trendy styles
+                </p>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Electronics"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    📱
+                </div>
+
+                <h3>Electronics</h3>
+
+                <p>
+                    Smart gadgets
+                </p>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Beauty"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    ✨
+                </div>
+
+                <h3>Beauty</h3>
+
+                <p>
+                    Beauty essentials
+                </p>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Home"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    🏠
+                </div>
+
+                <h3>Home</h3>
+
+                <p>
+                    Home essentials
+                </p>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Sports"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    ⚽
+                </div>
+
+                <h3>Sports</h3>
+
+                <p>
+                    Sports products
+                </p>
+
+            </button>
+
+
+            <button
+                class="category-card"
+                data-category="Accessories"
+                type="button">
+
+                <div
+                    class="category-icon"
+                    aria-hidden="true">
+                    👜
+                </div>
+
+                <h3>Accessories</h3>
+
+                <p>
+                    Complete your style
+                </p>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRODUCTS
+         ===================================================== -->
+
+    <section
+        class="section products-section"
+        id="products">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    OUR STORE
+                </span>
+
+                <h2 id="productSectionTitle">
+                    Popular Products
+                </h2>
+
+            </div>
+
+            <button
+                id="clearFilterBtn"
+                class="outline-btn"
+                type="button"
+                style="display:none;">
+                Show All
+            </button>
+
+        </div>
+
+
+        <div
+            id="productGrid"
+            class="product-grid">
+        </div>
+
+
+        <div
+            id="noProducts"
+            class="empty-state"
+            style="display:none;">
+
+            <div
+                class="empty-icon"
+                aria-hidden="true">
+                🔍
+            </div>
+
+            <h3>
+                No Products Found
+            </h3>
+
+            <p>
+                We couldn't find any product matching your search.
+            </p>
+
+            <button
+                class="primary-btn"
+                id="emptyResetBtn"
+                type="button">
+                View All Products
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DEALS
+         ===================================================== -->
+
+    <section
+        class="section deals-section"
+        id="deals">
+
+        <div class="deal-banner">
+
+            <div>
+
+                <span class="section-label">
+                    LIMITED TIME
+                </span>
+
+                <h2>
+                    🔥 Best Deals
+                </h2>
+
+                <p>
+                    Grab your favourite products before the stock runs out.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                id="dealsSectionBtn2"
+                type="button">
+                Shop Deals →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEW ARRIVALS
+         ===================================================== -->
+
+    <section
+        class="section"
+        id="new-arrivals">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    JUST ARRIVED
+                </span>
+
+                <h2>
+                    ✨ New Arrivals
+                </h2>
+
+            </div>
+
+            <button
+                class="outline-btn"
+                id="newArrivalsSectionBtn"
+                type="button">
+                View All
+            </button>
+
+        </div>
+
+
+        <div
+            id="newArrivalsGrid"
+            class="product-grid">
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURES
+         ===================================================== -->
+
+    <section class="section">
+
+        <div class="feature-strip">
+
+
+            <div class="feature">
+
+                <div
+                    class="feature-icon"
+                    aria-hidden="true">
+                    🚚
+                </div>
+
+                <div>
+
+                    <h3>
+                        Fast Delivery
+                    </h3>
+
+                    <p>
+                        Quick &amp; reliable delivery
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div
+                    class="feature-icon"
+                    aria-hidden="true">
+                    🔒
+                </div>
+
+                <div>
+
+                    <h3>
+                        Secure Shopping
+                    </h3>
+
+                    <p>
+                        Your information stays safe
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div
+                    class="feature-icon"
+                    aria-hidden="true">
+                    💯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Quality Products
+                    </h3>
+
+                    <p>
+                        Products you can trust
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div
+                    class="feature-icon"
+                    aria-hidden="true">
+                    📞
+                </div>
+
+                <div>
+
+                    <h3>
+                        Customer Support
+                    </h3>
+
+                    <p>
+                        We're here to help
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+
+    <section
+        class="section contact-section"
+        id="contactSection">
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <span class="section-label">
+                    GET IN TOUCH
+                </span>
+
+                <h2>
+                    Contact VJoraShop
+                </h2>
+
+                <p>
+                    Have a question about a product or your order?
+                    Send us a message.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        📧
+                    </span>
+
+                    <a
+                        href="mailto:support@vjorashop.in">
+                        support@vjorashop.in
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        📞
+                    </span>
+
+                    <span>
+                        Customer Support
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        📍
+                    </span>
+
+                    <span>
+                        India
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="contactForm"
+                class="contact-form">
+
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required>
+
+                <input
+                    type="email"
+                    id="contactEmail"
+                    placeholder="Your Email"
+                    autocomplete="email"
+                    required>
+
+                <input
+                    type="text"
+                    id="contactSubject"
+                    placeholder="Subject"
+                    required>
+
+                <textarea
+                    id="contactMessage"
+                    placeholder="Write your message..."
+                    rows="5"
+                    required></textarea>
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+                    Send Message →
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+
+        <!-- FOOTER BRAND -->
+        <div class="footer-brand">
+
+            <button
+                class="footer-logo"
+                id="footerLogoBtn"
+                type="button"
+                aria-label="VJoraShop Home">
+
+                <img
+                    src="images/logo.png"
+                    alt="VJoraShop"
+                    width="120"
+                    height="35">
+
+            </button>
+
+            <p>
+                Your trusted online shopping destination
+                for everyday products.
+            </p>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <button
+                id="footerHomeBtn"
+                type="button">
+                Home
+            </button>
+
+            <button
+                id="footerOrdersBtn"
+                type="button">
+                My Orders
+            </button>
+
+            <button
+                id="footerAccountBtn"
+                type="button">
+                My Account
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+        <div>
+
+            <h3>
+                Categories
+            </h3>
+
+            <button
+                data-nav-category="Fashion"
+                type="button">
+                Fashion
+            </button>
+
+            <button
+                data-nav-category="Electronics"
+                type="button">
+                Electronics
+            </button>
+
+            <button
+                data-nav-category="Beauty"
+                type="button">
+                Beauty
+            </button>
+
+            <button
+                data-nav-category="Home"
+                type="button">
+                Home
+            </button>
+
+            <button
+                data-nav-category="Sports"
+                type="button">
+                Sports
+            </button>
+
+            <button
+                data-nav-category="Accessories"
+                type="button">
+                Accessories
+            </button>
+
+        </div>
+
+
+        <!-- BUSINESS -->
+        <div>
+
+            <h3>
+                Business
+            </h3>
+
+            <a
+                href="admin.html"
+                class="admin-link">
+                Admin Panel
+            </a>
+
+            <button
+                id="footerContactBtn"
+                type="button">
+                Contact Us
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 VJoraShop. All Rights Reserved.
+        </p>
+
+        <p>
+            Made with ❤️ for online shopping
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MODALS
+     ========================================================= -->
+
+
+<!-- CART MODAL -->
+
+<div
+    class="modal-overlay"
+    id="cartOverlay"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <aside class="side-cart">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="section-label">
+                    YOUR BAG
+                </span>
+
+                <h2>
+                    Shopping Cart
+                </h2>
+
+            </div>
+
+            <button
+                id="closeCartBtn"
+                class="close-btn"
+                type="button"
+                aria-label="Close cart">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="cartItems"
+            class="cart-items">
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <button
+                id="checkoutBtn"
+                class="primary-btn full-btn"
+                type="button">
+                Proceed to Checkout →
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<!-- PRODUCT DETAILS MODAL -->
+
+<div
+    class="modal-overlay"
+    id="detailsModal"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <div class="modal-box details-modal">
+
+        <button
+            id="closeDetailsBtn"
+            class="close-btn"
+            type="button"
+            aria-label="Close product details">
+            ×
+        </button>
+
+        <div id="detailsContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ACCOUNT MODAL -->
+
+<div
+    class="modal-overlay"
+    id="accountModal"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <div class="modal-box account-modal">
+
+        <button
+            id="closeAccountBtn"
+            class="close-btn"
+            type="button"
+            aria-label="Close account">
+            ×
+        </button>
+
+        <div id="accountContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ORDERS MODAL -->
+
+<div
+    class="modal-overlay"
+    id="ordersModal"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <div class="modal-box orders-modal">
+
+        <button
+            id="closeOrdersBtn"
+            class="close-btn"
+            type="button"
+            aria-label="Close orders">
+            ×
+        </button>
+
+        <div id="ordersContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- CHECKOUT MODAL -->
+
+<div
+    class="modal-overlay"
+    id="checkoutModal"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <div class="modal-box checkout-modal">
+
+        <button
+            id="closeCheckoutBtn"
+            class="close-btn"
+            type="button"
+            aria-label="Close checkout">
+            ×
+        </button>
+
+        <span class="section-label">
+            SECURE CHECKOUT
+        </span>
+
+        <h2>
+            Complete Your Order
+        </h2>
+
+
+        <form
+            id="checkoutForm"
+            class="checkout-form">
+
+
+            <div class="form-row">
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Full Name"
+                    autocomplete="name"
+                    required>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Mobile Number"
+                    autocomplete="tel"
+                    inputmode="numeric"
+                    required>
+
+            </div>
+
+
+            <input
+                type="text"
+                id="customerAddress"
+                placeholder="Full Address"
+                autocomplete="street-address"
+                required>
+
+
+            <div class="form-row">
+
+                <input
+                    type="text"
+                    id="customerCity"
+                    placeholder="City"
+                    autocomplete="address-level2"
+                    required>
+
+                <input
+                    type="text"
+                    id="customerPincode"
+                    placeholder="Pincode"
+                    autocomplete="postal-code"
+                    inputmode="numeric"
+                    required>
+
+            </div>
+
+
+            <select
+                id="paymentMethod"
+                required>
+
+                <option value="">
+                    Select Payment Method
+                </option>
+
+                <option value="UPI">
+                    Online Payment / UPI
+                </option>
+
+                <option value="Cash on Delivery">
+                    Cash on Delivery
+                </option>
+
+            </select>
+
+
+            <button
+                type="submit"
+                class="primary-btn full-btn">
+                Place Order →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- SUCCESS MODAL -->
+
+<div
+    class="modal-overlay"
+    id="successModal"
+    style="display:none;"
+    role="dialog"
+    aria-modal="true">
+
+    <div class="modal-box success-box">
+
+        <div
+            class="success-icon"
+            aria-hidden="true">
+            ✓
+        </div>
+
+        <span class="section-label">
+            ORDER CONFIRMED
+        </span>
+
+        <h2>
+            Thank You!
+        </h2>
+
+        <p>
+            Your order has been placed successfully.
+        </p>
+
+
+        <div class="order-number">
+
+            Order ID:
+            <strong id="successOrderId">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="success-buttons">
+
+            <button
+                class="primary-btn"
+                id="successOrdersBtn"
+                type="button">
+                View My Orders
+            </button>
+
+            <button
+                class="outline-btn"
+                id="successContinueBtn"
+                type="button">
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST NOTIFICATION -->
+
+<div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite">
+
+    <span id="toastMessage">
+        Done
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     SCRIPT
+     ========================================================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>

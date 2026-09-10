@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VJora Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <div id="adminLogin" style="
+  position:fixed;
+  inset:0;
+  background:#071426;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+">
+  <div style="
+    background:white;
+    padding:30px;
+    width:320px;
+    border-radius:15px;
+    text-align:center;
+  ">
+    <h2>VJoraShop Admin</h2>
+
+    <input
+      type="text"
+      id="adminUsername"
+      placeholder="Username"
+      style="width:100%;padding:12px;margin:10px 0;box-sizing:border-box;"
+    >
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Password"
+      style="width:100%;padding:12px;margin:10px 0;box-sizing:border-box;"
+    >
+
+    <button
+      onclick="adminLogin()"
+      style="width:100%;padding:12px;background:#f5c400;border:0;border-radius:8px;font-weight:bold;cursor:pointer;"
+    >
+      Login
+    </button>
+
+    <p id="loginError" style="color:red;"></p>
+  </div>
+</div>
+
+<header class="admin-header">
+    <div class="admin-brand">
+        <div class="brand-mark">VJ</div>
+        <div>
+            <h1>VJora</h1>
+            <span>Admin Panel</span>
+        </div>
+    </div>
+
+    <div class="header-actions">
+        <a href="index.html" class="store-btn">← View Store</a>
+        <button id="adminLogoutBtn" class="logout-btn">Logout</button>
+    </div>
+</header>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <button class="side-btn active" data-section="dashboard">
+            📊 Dashboard
+        </button>
+
+        <button class="side-btn" data-section="products">
+            🛍️ Products
+        </button>
+
+        <button class="side-btn" data-section="orders">
+            📦 Orders
+        </button>
+
+        <button class="side-btn" data-section="customers">
+            👤 Customers
+        </button>
+
+        <button class="side-btn" data-section="settings">
+            ⚙️ Settings
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+        <!-- DASHBOARD -->
+        <section id="dashboardSection" class="admin-section active">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome to your VJora store management panel.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">🛍️</div>
+                    <div>
+                        <span>Total Products</span>
+                        <strong id="totalProducts">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div>
+                        <span>Total Orders</span>
+                        <strong id="totalOrders">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div>
+                        <span>Total Sales</span>
+                        <strong id="totalSales">₹0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div>
+                        <span>Customers</span>
+                        <strong id="totalCustomers">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>Recent Orders</h3>
+                        <button class="small-btn" data-section-target="orders">
+                            View All
+                        </button>
+                    </div>
+
+                    <div id="recentOrders" class="table-wrap"></div>
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>Low Stock Products</h3>
+                        <button class="small-btn" data-section-target="products">
+                            Products
+                        </button>
+                    </div>
+
+                    <div id="lowStockProducts" class="low-stock-list"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCTS -->
+        <section id="productsSection" class="admin-section">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Products</h2>
+                    <p>Add, edit, delete and manage your store products.</p>
+                </div>
+
+                <button id="addProductBtn" class="primary-btn">
+                    + Add Product
+                </button>
+            </div>
+
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="productSearch"
+                    placeholder="Search products..."
+                >
+
+                <select id="productCategoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Home">Home</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
+
+            </div>
+
+
+            <div class="panel">
+                <div id="productsTable" class="table-wrap"></div>
+            </div>
+
+        </section>
+
+
+        <!-- ORDERS -->
+        <section id="ordersSection" class="admin-section">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Orders</h2>
+                    <p>Manage customer orders and update order status.</p>
+                </div>
+            </div>
+
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="orderSearch"
+                    placeholder="Search order, customer or phone..."
+                >
+
+                <select id="orderStatusFilter">
+                    <option value="all">All Status</option>
+                    <option value="Order Placed">Order Placed</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+
+            </div>
+
+
+            <div class="panel">
+                <div id="ordersTable" class="table-wrap"></div>
+            </div>
+
+        </section>
+
+
+        <!-- CUSTOMERS -->
+        <section id="customersSection" class="admin-section">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Customers</h2>
+                    <p>Customers who have placed orders on VJora.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div id="customersTable" class="table-wrap"></div>
+            </div>
+
+        </section>
+
+
+        <!-- SETTINGS -->
+        <section id="settingsSection" class="admin-section">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Basic store and admin settings.</p>
+                </div>
+            </div>
+            <div class="form-group">
+    <label for="storeUpiId">UPI ID</label>
+    <input
+        type="text"
+        id="storeUpiId"
+        placeholder="example@upi"
+        autocomplete="off"
+    >
+    <small>Customers ke UPI payment ke liye ye UPI ID use hogi.</small>
+</div>
+
+
+            <div class="settings-grid">
+
+                <div class="panel settings-card">
+
+                    <h3>Store Information</h3>
+
+                    <label>Store Name</label>
+                    <input
+                        type="text"
+                        id="storeName"
+                        value="VJora"
+                    >
+
+                    <label>Store Email</label>
+                    <input
+                        type="email"
+                        id="storeEmail"
+                        placeholder="support@vjora.com"
+                    >
+
+                    <label>Store Phone</label>
+                    <input
+                        type="text"
+                        id="storePhone"
+                        placeholder="+91 XXXXX XXXXX"
+                    >
+
+                    <button id="saveSettingsBtn" class="primary-btn">
+                        Save Settings
+                    </button>
+
+                </div>
+
+
+                <div class="panel settings-card">
+
+                    <h3>Store Data</h3>
+
+                    <p>
+                        Products and orders are currently connected
+                        through this browser's local storage.
+                    </p>
+
+                    <button id="exportDataBtn" class="secondary-btn">
+                        Export Store Data
+                    </button>
+
+                    <button id="resetProductsBtn" class="danger-btn">
+                        Reset Demo Products
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="productModalTitle">Add Product</h2>
+                <p>Create or update a product.</p>
+            </div>
+
+            <button id="closeProductModal" class="close-btn">
+                ×
+            </button>
+        </div>
+
+
+        <form id="productForm">
+
+            <input type="hidden" id="productId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Product Name *</label>
+                    <input
+                        type="text"
+                        id="productName"
+                        required
+                        placeholder="Product name"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Category *</label>
+
+                    <select id="productCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Home">Home</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label>Price *</label>
+                    <input
+                        type="number"
+                        id="productPrice"
+                        min="0"
+                        required
+                        placeholder="299"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Old Price</label>
+                    <input
+                        type="number"
+                        id="productOldPrice"
+                        min="0"
+                        placeholder="599"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Stock *</label>
+                    <input
+                        type="number"
+                        id="productStock"
+                        min="0"
+                        required
+                        placeholder="20"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Image Path</label>
+                    <input
+                        type="text"
+                        id="productImage"
+                        placeholder="images/product.jpg"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    id="cancelProductBtn"
+                    class="secondary-btn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Save Product
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="modal">
+
+    <div class="modal-box order-modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Order Details</h2>
+                <p id="orderModalId"></p>
+            </div>
+
+            <button id="closeOrderModal" class="close-btn">
+                ×
+            </button>
+
+        </div>
+
+        <div id="orderDetailsContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="adminToast" class="admin-toast">
+    <span id="adminToastMessage"></span>
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+</html>
