@@ -1777,7 +1777,7 @@ function buildOrderItems(items) {
    RAZORPAY PAYMENT + CHECKOUT
    ========================================================= */
 
-const RAZORPAY_BACKEND_URL = "";
+const RAZORPAY_BACKEND_URL = "https://vjorashop-backend.onrender.com";
 
 
 /* =========================================================
